@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuParserSharp", "MuParserSharp\MuParserSharp.csproj", "{BA5F4057-606C-4F46-8530-69A25069FEC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuParserSharp.Tests", "MuParserSharp.Tests\MuParserSharp.Tests.csproj", "{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuParserREPL", "MuParserREPL\MuParserREPL.csproj", "{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{BA3350BD-E9CA-4B2B-8E4D-A2734ACE8224}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		MuParserX.LICENSE = MuParserX.LICENSE
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Debug|x64.Build.0 = Debug|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Release|x64.ActiveCfg = Release|Any CPU
+		{BA5F4057-606C-4F46-8530-69A25069FEC8}.Release|x64.Build.0 = Release|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Debug|x64.Build.0 = Debug|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Release|x64.ActiveCfg = Release|Any CPU
+		{2E6191A4-3BC1-4B46-A73D-518779CF6AEC}.Release|x64.Build.0 = Release|Any CPU
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Debug|x64.ActiveCfg = Debug|x64
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Debug|x64.Build.0 = Debug|x64
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Release|x64.ActiveCfg = Release|x64
+		{4EFA078E-D6B7-4DEA-8CE9-B5174520091F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2F181A4-FC5D-4AFC-A4AC-195B993A7031}
+	EndGlobalSection
+EndGlobal
