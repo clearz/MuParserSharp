@@ -71,21 +71,21 @@ namespace MuParserSharp.Parser
 
         public override IValue Assign(Matrix val)
         {
-            Global.MUP_VERIFY(() => val != null);
+            Global.MUP_VERIFY(val != null);
             m_pVal.Assign(val);
             return this;
         }
 
         public override IValue Assign(IValue val)
         {
-            Global.MUP_VERIFY(() => val != null);
+            Global.MUP_VERIFY(val != null);
             m_pVal.Assign(val);
             return this;
         }
 
         public override IValue Assign(Value val)
         {
-            Global.MUP_VERIFY(() => val != null);
+            Global.MUP_VERIFY(val != null);
             m_pVal.Assign(val);
             return this;
         }
@@ -260,40 +260,40 @@ namespace MuParserSharp.Parser
 
         public void SetInteger(long b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
 
         public void SetChar(char b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
         public void SetFloat(double b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
         public void SetString(string b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
         public void SetBool(bool b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
 
         public void SetComplex(Complex b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
 
         public void SetArray(Matrix b)
         {
-            Global.MUP_VERIFY(() => m_pVal != null);
+            Global.MUP_VERIFY(m_pVal != null);
             m_pVal.Assign(b);
         }
         public override char GetValueType() => m_pVal?.GetValueType() ?? 'v';
@@ -327,22 +327,22 @@ namespace MuParserSharp.Parser
 
         public static IValue operator +(Variable v, IValue val)
         {
-            Global.MUP_VERIFY(() => v.m_pVal != null);
+            Global.MUP_VERIFY(v.m_pVal != null);
             return v.m_pVal + val;
         }
         public static IValue operator -(Variable v, IValue val)
         {
-            Global.MUP_VERIFY(() => v.m_pVal != null);
+            Global.MUP_VERIFY(v.m_pVal != null);
             return v.m_pVal - val;
         }
         public static IValue operator *(Variable v, IValue val)
         {
-            Global.MUP_VERIFY(() => v.m_pVal != null);
+            Global.MUP_VERIFY(v.m_pVal != null);
             return v.m_pVal * val;
         }
         public static IValue operator /(Variable v, IValue val)
         {
-            Global.MUP_VERIFY(() => v.m_pVal != null);
+            Global.MUP_VERIFY(v.m_pVal != null);
             return v.m_pVal / val;
         }
 }

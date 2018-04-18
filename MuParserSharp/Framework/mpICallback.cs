@@ -44,7 +44,7 @@ namespace MuParserSharp.Framework
         */
         public ParserXBase GetParent()
         {
-            Global.MUP_VERIFY(() => m_pParent != null);
+            Global.MUP_VERIFY(m_pParent != null);
             return m_pParent;
         }
 
@@ -58,7 +58,7 @@ namespace MuParserSharp.Framework
         */
         internal void SetParent(ParserXBase a_pParent)
         {
-            Global.MUP_VERIFY(() => a_pParent != null);
+            Global.MUP_VERIFY(a_pParent != null);
             m_pParent = a_pParent;
         }
 

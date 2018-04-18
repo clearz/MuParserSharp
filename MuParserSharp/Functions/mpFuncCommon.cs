@@ -131,7 +131,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sizeof(a) - Returns the number of elements in a.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = a_pArg[0].GetArray().Length();
         }
 

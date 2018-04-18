@@ -15,7 +15,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsVariable())
                 throw new ParserError(
                     new ErrorContext {Arg = 1, Ident = "=", Errc = EErrorCodes.ecASSIGNEMENT_TO_VALUE});
@@ -35,7 +35,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsVariable())
                 throw new ParserError(
                     new ErrorContext { Arg = 1, Ident = "+=", Errc = EErrorCodes.ecASSIGNEMENT_TO_VALUE });
@@ -56,7 +56,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsVariable())
                 throw new ParserError(
                     new ErrorContext { Arg = 1, Ident = "-=", Errc = EErrorCodes.ecASSIGNEMENT_TO_VALUE });
@@ -77,7 +77,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsVariable())
                 throw new ParserError(
                     new ErrorContext { Arg = 1, Ident = "*=", Errc = EErrorCodes.ecASSIGNEMENT_TO_VALUE });
@@ -98,7 +98,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (!a_pArg[0].IsVariable())
                 throw new ParserError(

@@ -40,7 +40,7 @@ namespace MuParserSharp.Util
 
         public static string Dump(this IToken o, params object[] strz)
         {
-            Global.MUP_VERIFY(() => strz.Length % 2 == 0);
+            Global.MUP_VERIFY(strz.Length % 2 == 0);
             const char DELIM = ';';
             var ss = new StringBuilder();
 
@@ -69,13 +69,12 @@ namespace MuParserSharp.Util
 
         [Conditional("DEBUG")]
         [Conditional("TESTING")]
-        public static void MUP_VERIFY(Func<bool> exp,
+        public static void MUP_VERIFY(bool exp,
             [CallerFilePath] string file = "",
             [CallerMemberName] string member = "",
             [CallerLineNumber] int line = 0)
         {
-         //   return;
-            if (!exp())
+            if (!exp)
             {
                 StackTrace st = new StackTrace();
                 var estr = exp.ToString();

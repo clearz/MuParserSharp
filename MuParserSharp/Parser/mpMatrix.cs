@@ -254,14 +254,14 @@ namespace MuParserSharp.Parser
                 i = nCol * m_nRows + nRow;
             }
 
-            Global.MUP_VERIFY(() => i < (long)m_vData.Length);
+            Global.MUP_VERIFY(i < (long)m_vData.Length);
             return ref m_vData[i];
         }
 
         //---------------------------------------------------------------------------------------------
         public IValue GetData()
         {
-            Global.MUP_VERIFY(() => m_vData.Length > 0);
+            Global.MUP_VERIFY(m_vData.Length > 0);
             return m_vData[0];
         }
 

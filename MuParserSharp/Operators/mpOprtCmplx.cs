@@ -20,7 +20,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
 
             if (a_pArg[0].IsScalar())
             {
@@ -70,7 +70,7 @@ namespace MuParserSharp.Operators
 
            public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (a_pArg[0].IsNonComplexScalar() && a_pArg[1].IsNonComplexScalar())
             {
@@ -113,7 +113,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (a_pArg[0].IsNonComplexScalar() && a_pArg[1].IsNonComplexScalar())
             {
@@ -156,7 +156,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (a_pArg[0].IsNonComplexScalar() && a_pArg[1].IsNonComplexScalar())
             {
@@ -214,7 +214,12 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 2));
+            if (!a_pArg[1].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[1].GetIdent(), a_pArg[1].GetValueType(), 'z', 2));
+
 
             if (a_pArg[0].IsNonComplexScalar() && a_pArg[1].IsNonComplexScalar())
             {
@@ -251,7 +256,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             if (arg[0].IsComplex() && arg[1].IsComplex())
             {

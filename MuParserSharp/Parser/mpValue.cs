@@ -292,57 +292,57 @@ namespace MuParserSharp.Parser
 
         public override long GetInteger()
         {
-            Global.MUP_VERIFY(() => m_cType == 'i');
+            Global.MUP_VERIFY(m_cType == 'i');
             return v.intVal;
         }
 
         public override double GetFloat()
         {
-            Global.MUP_VERIFY(() => IsNonComplexScalar());
+            Global.MUP_VERIFY(IsNonComplexScalar());
             return m_cType == 'f' ? v.floatVal : v.intVal;
         }
 
         public override bool GetBool()
         {
-            Global.MUP_VERIFY(() => m_cType == 'b');
+            Global.MUP_VERIFY(m_cType == 'b');
             return v.boolVal;
         }
 
         public override double GetReal()
         {
             if (IsNonComplexScalar()) return GetFloat();
-            Global.MUP_VERIFY(() => m_cType == 'z');
+            Global.MUP_VERIFY(m_cType == 'z');
             return v.complexVal.Real;
         }
 
         public override double GetImag()
         {
             if (IsNonComplexScalar()) return 0;
-            Global.MUP_VERIFY(() => m_cType == 'z');
+            Global.MUP_VERIFY(m_cType == 'z');
             return v.complexVal.Imaginary;
         }
 
         public override Complex GetComplex(bool assert = true)
         {
-            if (assert) Global.MUP_VERIFY(() => m_cType == 'z' || m_cType == 'f');
+            if (assert) Global.MUP_VERIFY(m_cType == 'z' || m_cType == 'f');
             return v.complexVal;
         }
 
         public override string GetString()
         {
-            Global.MUP_VERIFY(() => m_cType == 's');
+            Global.MUP_VERIFY(m_cType == 's');
             return stringVal;
         }
 
         public override char GetChar()
         {
-            Global.MUP_VERIFY(() => m_cType == 'c');
+            Global.MUP_VERIFY(m_cType == 'c');
             return v.charVal;
         }
 
         public override Matrix GetArray()
         {
-            Global.MUP_VERIFY(() => m_cType == 'm');
+            Global.MUP_VERIFY(m_cType == 'm');
             return matrixVal;
         }
 
@@ -399,7 +399,7 @@ namespace MuParserSharp.Parser
         public override bool IsScalarMatrix()
         {
             if (m_cType != 'm') return false;
-            Global.MUP_VERIFY(() => matrixVal != null);
+            Global.MUP_VERIFY(matrixVal != null);
             if (matrixVal.Length() > 0)
                 return matrixVal.m_vData.All(v => v.IsScalar());
             Console.WriteLine("Maybe shouldn't be here");

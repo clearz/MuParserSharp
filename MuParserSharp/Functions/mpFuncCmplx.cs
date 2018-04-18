@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using MuParserSharp.Framework;
+using MuParserSharp.Parser;
 
 namespace MuParserSharp.Functions
 {
@@ -110,6 +111,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sin(x) - Returns the sine of the number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Sin(a_pArg[0].AsFloat());
             else
@@ -127,6 +131,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "cosh(x) - Returns the hyperbolic cosine of the number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Cosh(a_pArg[0].AsFloat());
             else
@@ -144,6 +151,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sinh(x) - Returns the hyperbolic sine of the complex number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Sinh(a_pArg[0].AsFloat());
             else
@@ -161,6 +171,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "tan(x) - Returns the tangens of the number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Tan(a_pArg[0].AsFloat());
             else
@@ -178,6 +191,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "tanh(x) - Returns the hyperbolic tangent of the complex number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Tanh(a_pArg[0].AsFloat());
             else
@@ -195,6 +211,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sqrt(x) - Returns the square root of x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg1 = a_pArg[0];
             if (arg1.IsNonComplexScalar() && arg1.AsFloat() > 0)
                 ret = Math.Sqrt(arg1.AsFloat());
@@ -220,6 +239,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "exp(x) - Returns the base-e exponential of the complex number x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Pow(Math.E, a_pArg[0].AsFloat());
             else
@@ -246,6 +268,9 @@ namespace MuParserSharp.Functions
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg = a_pArg[0];
             if (arg.IsInteger())
                 ret = Math.Log(arg.GetInteger());
@@ -263,6 +288,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log(x) - Common logarithm of x, for values of x greater than zero.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg = a_pArg[0];
             if (arg.IsInteger())
                 ret = Math.Log(arg.GetInteger());
@@ -280,6 +308,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log10(x) - Common logarithm of x, for values of x greater than zero.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg = a_pArg[0];
             if (arg.IsInteger())
                 ret = Math.Log10(arg.GetInteger());
@@ -297,6 +328,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log2(x) - Logarithm to base 2 of x, for values of x greater than zero.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg = a_pArg[0];
             if (arg.IsInteger())
                 ret = Math.Log(arg.GetInteger()) * (1 / Math.Log(2));
@@ -315,6 +349,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "abs(x) - Returns the absolute value of x.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             if (a_pArg[0].IsNonComplexScalar())
                 ret = Math.Abs(a_pArg[0].AsFloat());
             else
@@ -333,6 +370,9 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "pow(x, y) - Raise x to the power of y.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
+            if (!a_pArg[0].IsScalar())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'z', 1));
+
             var arg1 = a_pArg[0];
             var arg2 = a_pArg[0];
             if (arg1.IsNonComplexScalar() && arg2.IsNonComplexScalar())

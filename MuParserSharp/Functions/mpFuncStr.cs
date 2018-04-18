@@ -11,7 +11,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "strlen(s) - Returns the length of the string s.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = a_pArg[0].GetString().Length;
         }
 
@@ -24,7 +24,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "split(s) - split a string into an array of characters.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = new Matrix(a_pArg[0].GetString().ToCharArray().Select(c => (IValue)c));
         }
 
@@ -37,7 +37,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "join(a, s) - Returns a string of the elements in a seperated by the string s.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2 && a_pArg[0].IsMatrix() && a_pArg[1].IsString());
+            Global.MUP_VERIFY(a_pArg.Length == 2 && a_pArg[0].IsMatrix() && a_pArg[1].IsString());
             ret = string.Join(a_pArg[1].GetString(), a_pArg[0].GetArray().m_vData.Cast<object>().ToArray()); ;
         }
 
@@ -49,7 +49,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "toupper(s) - Converts the string s to uppercase characters.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1 && a_pArg[0].IsString());
+            Global.MUP_VERIFY(a_pArg.Length == 1 && a_pArg[0].IsString());
             ret = a_pArg[0].GetString().ToUpper();
         }
 
@@ -61,7 +61,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "tolower(s) - Converts the string s to lowercase characters.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = a_pArg[0].GetString().ToLower();
         }
 
@@ -73,7 +73,11 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "str2dbl(s) - Converts the string stored in s into a floating foint value.";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
+
+            if (!a_pArg[0].IsString())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 's', 1));
+
             if (double.TryParse(a_pArg[0].GetString(), out double val))
                 ret = val;
             else ret = double.NaN;

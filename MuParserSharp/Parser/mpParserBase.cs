@@ -181,7 +181,7 @@ namespace MuParserSharp.Parser
         */
         public string ValidNameChars()
         {
-            Global.MUP_VERIFY(() => m_sNameChars.Length > 0);
+            Global.MUP_VERIFY(m_sNameChars.Length > 0);
             return m_sNameChars;
         }
 
@@ -191,7 +191,7 @@ namespace MuParserSharp.Parser
         */
         public string ValidOprtChars()
         {
-            Global.MUP_VERIFY(() => m_sOprtChars.Length > 0);
+            Global.MUP_VERIFY(m_sOprtChars.Length > 0);
             return m_sOprtChars;
         }
 
@@ -201,7 +201,7 @@ namespace MuParserSharp.Parser
         */
         public string ValidInfixOprtChars()
         {
-            Global.MUP_VERIFY(() => m_sInfixOprtChars.Length > 0);
+            Global.MUP_VERIFY(m_sInfixOprtChars.Length > 0);
             return m_sInfixOprtChars;
         }
 
@@ -564,15 +564,15 @@ namespace MuParserSharp.Parser
         {
             while (a_stOpt.Any() && a_stOpt.Peek().GetCode() == ECmdCode.cmELSE)
             {
-                Global.MUP_VERIFY(() => a_stOpt.Any());
-                Global.MUP_VERIFY(() => m_nPos >= 3);
-                Global.MUP_VERIFY(() => a_stOpt.Peek().GetCode() == ECmdCode.cmELSE);
+                Global.MUP_VERIFY(a_stOpt.Any());
+                Global.MUP_VERIFY(m_nPos >= 3);
+                Global.MUP_VERIFY(a_stOpt.Peek().GetCode() == ECmdCode.cmELSE);
 
                 IToken opElse = a_stOpt.Pop();
                 IToken opIf = a_stOpt.Pop();
-                Global.MUP_VERIFY(() => opElse.GetCode() == ECmdCode.cmELSE);
+                Global.MUP_VERIFY(opElse.GetCode() == ECmdCode.cmELSE);
 
-                Global.MUP_VERIFY(() => opIf.GetCode() == ECmdCode.cmIF);
+                Global.MUP_VERIFY(opIf.GetCode() == ECmdCode.cmIF);
 
                 // If then else hat 3 argumente und erzeugt einen rückgabewert (3-1=2)
                 m_nPos -= 2;
@@ -615,7 +615,7 @@ namespace MuParserSharp.Parser
                     case ECmdCode.cmIC:
                         {
                             ECmdCode eStarter = eCmd - 1;
-                            Global.MUP_VERIFY(() => eStarter == ECmdCode.cmCBO || eStarter == ECmdCode.cmIO);
+                            Global.MUP_VERIFY(eStarter == ECmdCode.cmCBO || eStarter == ECmdCode.cmIO);
 
                             // The argument count for parameterless functions is zero
                             // by default an opening bracket sets parameter count to 1
@@ -637,13 +637,13 @@ namespace MuParserSharp.Parser
                                 stOpt.Pop(); // Take opening bracket from stack
 
                                 ICallback PoprtIndex = pTok.AsICallback();
-                                Global.MUP_VERIFY(() => PoprtIndex != null);
+                                Global.MUP_VERIFY(PoprtIndex != null);
 
                                 pTok = PoprtIndex.SetNumArgsPresent(iArgc);
                                 m_rpn.Add(pTok);
 
                                 // If this is an index operator there must be something else in the register (the variable to index)
-                                Global.MUP_VERIFY(() => eCmd != ECmdCode.cmIC || m_nPos >= iArgc + 1);
+                                Global.MUP_VERIFY(eCmd != ECmdCode.cmIC || m_nPos >= iArgc + 1);
 
                                 // Reduce the index into the value registers accordingly
                                 m_nPos -= iArgc;
@@ -745,8 +745,8 @@ namespace MuParserSharp.Parser
                             {
                                 IToken Poprt1 = stOpt.Peek();
                                 IToken Poprt2 = pTok;
-                                Global.MUP_VERIFY(() => Poprt1 != null && Poprt2 != null);
-                                Global.MUP_VERIFY(() => Poprt1.AsIPrecedence() != null && Poprt2.AsIPrecedence() != null);
+                                Global.MUP_VERIFY(Poprt1 != null && Poprt2 != null);
+                                Global.MUP_VERIFY(Poprt1.AsIPrecedence() != null && Poprt2.AsIPrecedence() != null);
 
                                 int nPrec1 = Poprt1.AsIPrecedence().GetPri(),
                                     nPrec2 = Poprt2.AsIPrecedence().GetPri();
@@ -782,7 +782,7 @@ namespace MuParserSharp.Parser
                     //  Postfix Operators
                     //
                     case ECmdCode.cmOPRT_POSTFIX:
-                        Global.MUP_VERIFY(() => m_nPos != 0);
+                        Global.MUP_VERIFY(m_nPos != 0);
                         m_rpn.Add(pTok);
                         break;
 
@@ -800,7 +800,7 @@ namespace MuParserSharp.Parser
                     case ECmdCode.cmFUNC:
                         {
                             ICallback pFunc = pTok.AsICallback();
-                            Global.MUP_VERIFY(() => pFunc != null);
+                            Global.MUP_VERIFY(pFunc != null);
                             stOpt.Push(pTok);
                         }
                         break;
@@ -890,7 +890,7 @@ namespace MuParserSharp.Parser
                         {
                             IValue pVal = (IValue)pTok;
                             sidx++;
-                            Global.MUP_VERIFY(() => sidx < pStack.Length);
+                            Global.MUP_VERIFY(sidx < pStack.Length);
                             pStack[sidx] = pVal;
                             //  m_vStackBuffer[sidx] = rVal;
                             //if (pVal.IsVariable())
@@ -914,7 +914,7 @@ namespace MuParserSharp.Parser
                             ICallback pIdxOprt = (ICallback)pTok;
                             int nArgs = pIdxOprt.GetArgsPresent();
                             sidx -= nArgs - 1;
-                            Global.MUP_VERIFY(() => sidx >= 0);
+                            Global.MUP_VERIFY(sidx >= 0);
                             var arr = new IValue[nArgs + 1];
                             ref IValue val = ref pStack[--sidx];
                             Array.Copy(pStack, sidx, arr, 0, nArgs + 1);
@@ -939,7 +939,7 @@ namespace MuParserSharp.Parser
                             int nArgs = pFun.GetArgsPresent();
                             sidx -= nArgs - 1;
                             var arr = new IValue[nArgs];
-                            Global.MUP_VERIFY(() => sidx >= 0);
+                            Global.MUP_VERIFY(sidx >= 0);
                             // ref IValue val = ref pStack[sidx];
                             Array.Copy(pStack, sidx, arr, 0, nArgs);
                             try
@@ -1003,7 +1003,7 @@ namespace MuParserSharp.Parser
                         continue;
 
                     case ECmdCode.cmIF:
-                        Global.MUP_VERIFY(() => sidx >= 0);
+                        Global.MUP_VERIFY(sidx >= 0);
                         if (pStack[sidx--].GetBool() == false)
                             i += ((TokenIfThenElse)pTok).GetOffset();
                         continue;

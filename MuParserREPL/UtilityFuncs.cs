@@ -308,7 +308,7 @@ namespace MuParserREPL
         public override string GetDesc() => "";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = a_pArg[0].GetString().Length;
         }
 
@@ -321,7 +321,7 @@ namespace MuParserREPL
         public override string GetDesc() => "";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = a_pArg[0].GetString().Length;
         }
 

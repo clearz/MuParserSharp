@@ -25,11 +25,11 @@ namespace MuParserSharp.Parser
             else if (tok.AsICallback() != null)
             {
                 ICallback pFun = tok.AsICallback();
-                Global.MUP_VERIFY(() => pFun != null);
+                Global.MUP_VERIFY(pFun != null);
                 m_nStackPos -= pFun.GetArgsPresent() - 1;
             }
 
-            Global.MUP_VERIFY(() => m_nStackPos >= 0);
+            Global.MUP_VERIFY(m_nStackPos >= 0);
             m_nMaxStackPos = Math.Max(m_nStackPos, m_nMaxStackPos);
         }
 

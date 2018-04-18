@@ -17,7 +17,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
 
             if (a_pArg[0].IsScalar())
             {
@@ -64,7 +64,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
 
             if (a_pArg[0].IsScalar() || a_pArg[0].IsScalarMatrix())
             {
@@ -91,7 +91,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue arg1 = a_pArg[0];
             IValue arg2 = a_pArg[1];
@@ -146,7 +146,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue arg1 = a_pArg[0];
             IValue arg2 = a_pArg[1];
@@ -203,7 +203,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue arg1 = a_pArg[0];
             IValue arg2 = a_pArg[1];
@@ -224,7 +224,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue arg1 = a_pArg[0];
             IValue arg2 = a_pArg[1];
@@ -249,7 +249,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue arg1 = a_pArg[0];
             IValue arg2 = a_pArg[1];

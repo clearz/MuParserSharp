@@ -39,7 +39,7 @@ namespace MuParserSharp.Framework
         protected internal virtual void SetParent(TokenReader pTokenReader)
         {
 
-            Global.MUP_VERIFY(() => pTokenReader != null);
+            Global.MUP_VERIFY(pTokenReader != null);
             m_pTokenReader = pTokenReader;
         }
 

@@ -11,7 +11,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sin(x), sine function";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Sin(a_pArg[0].AsFloat());
         }
 
@@ -24,7 +24,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "cos(x), cosine function";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Cos(a_pArg[0].AsFloat());
         }
 
@@ -36,7 +36,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "tan(x), tangent function";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Tan(a_pArg[0].AsFloat());
         }
 
@@ -48,7 +48,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "asin(x), arc sine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Asin(a_pArg[0].AsFloat());
         }
 
@@ -61,7 +61,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "acos(x), arc cosine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Acos(a_pArg[0].AsFloat());
         }
 
@@ -74,7 +74,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "atan(x), arc tangent";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Atan(a_pArg[0].AsFloat());
         }
 
@@ -87,7 +87,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sinh(x), hyperbolic sine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Sinh(a_pArg[0].AsFloat());
         }
 
@@ -100,7 +100,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "cosh(x), hyperbolic cosine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Cosh(a_pArg[0].AsFloat());
         }
 
@@ -113,7 +113,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "tanh(x), hyperbolic tangent";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Tanh(a_pArg[0].AsFloat());
         }
 
@@ -126,7 +126,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "asinh(x), hyperbolic arc sine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             var x = a_pArg[0].AsFloat();
             ret = Math.Log(x + Math.Sqrt(x * x + 1));
         }
@@ -140,7 +140,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "acosh(x), hyperbolic arc cosine";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             var x = a_pArg[0].AsFloat();
             ret = Math.Log(x + Math.Sqrt(x * x - 1));
         }
@@ -154,7 +154,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "atanh(x), hyperbolic arc tangent";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             var x = a_pArg[0].AsFloat();
             ret = Math.Log((1 + x) / (1 - x)) / 2;
         }
@@ -168,7 +168,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log(x), Natural logarithm";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Log(a_pArg[0].AsFloat());
         }
 
@@ -181,7 +181,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log10(x), Base 10 Logarithm";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Log10(a_pArg[0].AsFloat());
         }
 
@@ -195,7 +195,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "log2(x), Base 2 Logarithm";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Log(a_pArg[0].AsFloat()) / LOG2;
         }
 
@@ -208,7 +208,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "ln(x), Natural logarithm";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Log(a_pArg[0].AsFloat());
         }
 
@@ -221,7 +221,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "sqrt(x), Square Root";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Sqrt(a_pArg[0].AsFloat());
         }
 
@@ -235,7 +235,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "cbrt(x), Cube Root";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Pow(a_pArg[0].AsFloat(), ONE_THIRD);
         }
 
@@ -248,7 +248,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "exp(x), Exponential (e^x)";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Exp(a_pArg[0].AsFloat());
         }
 
@@ -261,7 +261,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "abs(x), Absolute Value";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 1);
+            Global.MUP_VERIFY(a_pArg.Length == 1);
             ret = Math.Abs(a_pArg[0].AsFloat());
         }
 
@@ -274,7 +274,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "pow(x, y) - raise x to the power of y";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             ret = Math.Pow(a_pArg[0].AsFloat(), a_pArg[1].AsFloat());
         }
 
@@ -287,7 +287,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "hypot(x, y) - compute the length of the vector x,y";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             double d1 = a_pArg[0].AsFloat(), d2 = a_pArg[1].AsFloat();
             ret = Math.Sqrt(d1*d1+d2*d2);
         }
@@ -301,7 +301,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "arc tangent with quadrant fix";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             ret = Math.Atan2(a_pArg[0].AsFloat(), a_pArg[1].AsFloat());
         }
 
@@ -314,7 +314,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "fmod(x, y) - floating point remainder of x / y";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             ret = a_pArg[0].AsFloat() % a_pArg[1].AsFloat();
         }
 
@@ -327,7 +327,7 @@ namespace MuParserSharp.Functions
         public override string GetDesc() => "remainder(x, y) - IEEE remainder of x / y";
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             ret = Math.IEEERemainder(a_pArg[0].AsFloat(), a_pArg[1].AsFloat());
         }
 

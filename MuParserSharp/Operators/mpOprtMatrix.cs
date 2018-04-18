@@ -83,7 +83,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             IValue argMin = a_pArg[0];
             IValue argMax = a_pArg[1];

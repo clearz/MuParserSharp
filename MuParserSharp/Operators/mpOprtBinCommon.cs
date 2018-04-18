@@ -14,7 +14,11 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
+            if (!arg[0].IsString())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), arg[0].GetIdent(), arg[0].GetValueType(), 's', 2));
+            if (!arg[1].IsString())
+                throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), arg[1].GetIdent(), arg[1].GetValueType(), 's', 2));
 
             string a = arg[0].GetString();
             string b = arg[1].GetString();
@@ -31,7 +35,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] == arg[1];
         }
@@ -45,7 +49,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] != arg[1];
         }
@@ -59,7 +63,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] < arg[1];
         }
@@ -73,7 +77,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] > arg[1];
         }
@@ -87,7 +91,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] <= arg[1];
         }
@@ -101,7 +105,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] arg)
         {
-            Global.MUP_VERIFY(() => arg.Length == 2);
+            Global.MUP_VERIFY(arg.Length == 2);
 
             ret = arg[0] >= arg[1];
         }
@@ -116,7 +120,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsInteger())
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'i', 1));
 
@@ -139,7 +143,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsInteger())
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'i', 1));
 
@@ -162,7 +166,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (a_pArg[0].GetValueType() != 'b')
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'b', 1));
@@ -185,7 +189,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (a_pArg[0].GetValueType() != 'b')
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), a_pArg[0].GetIdent(), a_pArg[0].GetValueType(), 'b', 1));
@@ -208,7 +212,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-             Global.MUP_VERIFY(() => a_pArg.Length == 2);
+             Global.MUP_VERIFY(a_pArg.Length == 2);
 
             if (!a_pArg[0].IsScalar())
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), GetIdent(), a_pArg[0].GetValueType(), 'i', 1));
@@ -247,7 +251,7 @@ namespace MuParserSharp.Operators
 
         public override void Eval(ref IValue ret, IValue[] a_pArg)
         {
-            Global.MUP_VERIFY(() => a_pArg.Length == 2);
+            Global.MUP_VERIFY(a_pArg.Length == 2);
             if (!a_pArg[0].IsScalar())
                 throw new ParserError(new ErrorContext(EErrorCodes.ecTYPE_CONFLICT_FUN, GetExprPos(), GetIdent(), a_pArg[0].GetValueType(), 'i', 1));
 

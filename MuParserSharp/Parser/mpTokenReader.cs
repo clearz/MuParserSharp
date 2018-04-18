@@ -205,7 +205,7 @@ namespace MuParserSharp.Parser
 
         public IToken ReadNextToken()
         {
-            Global.MUP_VERIFY(() => m_pParser != null);
+            Global.MUP_VERIFY(m_pParser != null);
 
             SkipCommentsAndWhitespaces();
 
