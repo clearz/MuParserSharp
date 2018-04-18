@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MuParserSharp.Framework;
 using MuParserSharp.Parser;
@@ -66,15 +65,15 @@ namespace MuParserSharp.Tests
             IValue x = 1.0;
             IValue y = new Complex(0, 1);
             x += y;
-            x.GetImag().Should().Be(1);
-            x.GetReal().Should().Be(1);
-            x.GetValueType().Should().Be('z');
+            Assert.AreEqual(x.GetImag(), 1);
+            Assert.AreEqual(x.GetReal(), 1);
+            Assert.AreEqual(x.GetValueType(), 'z');
             x = 1.0;
             y = new Complex(0, 1);
             x -= y;
-            x.GetImag().Should().Be(-1);
-            x.GetReal().Should().Be(1);
-            x.GetValueType().Should().Be('z');
+            Assert.AreEqual(x.GetImag(), -1);
+            Assert.AreEqual(x.GetReal(), 1);
+            Assert.AreEqual(x.GetValueType(), 'z');
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MuParserSharp.Framework;
 using MuParserSharp.Parser;
@@ -46,153 +45,145 @@ namespace MuParserSharp.Tests
 
             p.SetExpr("v = 3.14");
             var v = p.Eval();
-            v.GetValueType().Should().Be('f');
-            v.AsFloat().Should().Be(3.14);
+            Assert.AreEqual('f', v.GetValueType());
+            Assert.AreEqual(3.14, v.AsFloat());
+
 
             p.SetExpr("v * 2");
             var ans = p.Eval(); // Perform arithmitic operation on variable
 
-            ans.GetValueType().Should().Be('f');
-            ans.AsFloat().Should().Be(6.28);
+            Assert.AreEqual('f', ans.GetValueType());
+            Assert.AreEqual(6.28, ans.AsFloat());
 
-            v.GetValueType().Should().Be('f');
-            v.AsFloat().Should().Be(3.14);
+
+            Assert.AreEqual('f', v.GetValueType());
+            Assert.AreEqual(3.14, v.AsFloat());
 
         }
 
         [TestMethod]
         public void test_if_matrix_values_work()
         {
-            matrix.IsMatrix().Should().BeTrue();
-            matrix.GetRows().Should().Be(3);
+
+            Assert.IsTrue(matrix.IsMatrix());
+            Assert.AreEqual(3, matrix.GetRows());
             var rows = matrix.GetRows();
 
             for (int i = 0; i < rows; i++)
             {
                 var dimRow = matrix.At(i).GetRows();
-                dimRow.Should().Be(3);
+                Assert.AreEqual(3, dimRow);
             }
         }
 
         [TestMethod]
         public void test_type_checking_of_float_value()
         {
-            fVal.IsScalar().Should().BeTrue();
-            fVal.IsNonComplexScalar().Should().BeTrue();
-            fVal.IsMatrix().Should().BeFalse();
-            fVal.IsInteger().Should().BeFalse();
-            fVal.GetValueType().Should().Be('f');
+            Assert.IsTrue(fVal.IsScalar());
+            Assert.IsTrue(fVal.IsNonComplexScalar());
+            Assert.IsFalse(fVal.IsMatrix());
+            Assert.IsFalse(fVal.IsInteger());
+            Assert.AreEqual('f', fVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_complex_value()
         {
-            cVal.IsScalar().Should().BeTrue();
-            cVal.IsNonComplexScalar().Should().BeFalse();
-            cVal.IsMatrix().Should().BeFalse();
-            cVal.IsInteger().Should().BeFalse();
-            cVal.GetValueType().Should().Be('z');
-            cVal.GetValueType().Should().Be('z');
+			Assert.IsTrue(cVal.IsScalar());
+			Assert.IsFalse(cVal.IsNonComplexScalar());
+			Assert.IsFalse(cVal.IsMatrix());
+			Assert.IsFalse(cVal.IsInteger());
+            Assert.AreEqual('z', cVal.GetValueType()); Assert.AreEqual('z', cVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_matrix_value()
         {
-            aVal.IsScalar().Should().BeFalse();
-            aVal.IsNonComplexScalar().Should().BeFalse();
-            aVal.IsMatrix().Should().BeTrue();
-            aVal.IsInteger().Should().BeFalse();
-            aVal.GetValueType().Should().Be('m');
+			Assert.IsFalse(aVal.IsScalar());
+			Assert.IsFalse(aVal.IsNonComplexScalar());
+			Assert.IsTrue(aVal.IsMatrix());
+			Assert.IsFalse(aVal.IsInteger()); Assert.AreEqual('m', aVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_string_value()
         {
-            sVal.IsScalar().Should().BeFalse();
-            sVal.IsNonComplexScalar().Should().BeFalse();
-            sVal.IsMatrix().Should().BeFalse();
-            sVal.IsInteger().Should().BeFalse();
-            sVal.GetValueType().Should().Be('s');
+			Assert.IsFalse(sVal.IsScalar());
+			Assert.IsFalse(sVal.IsNonComplexScalar());
+			Assert.IsFalse(sVal.IsMatrix());
+			Assert.IsFalse(sVal.IsInteger()); Assert.AreEqual('s', sVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_bool_value()
         {
-            bVal.IsScalar().Should().BeFalse();
-            bVal.IsNonComplexScalar().Should().BeFalse();
-            bVal.IsMatrix().Should().BeFalse();
-            bVal.IsInteger().Should().BeFalse();
-            bVal.GetValueType().Should().Be('b');
+			Assert.IsFalse(bVal.IsScalar());
+			Assert.IsFalse(bVal.IsNonComplexScalar());
+			Assert.IsFalse(bVal.IsMatrix());
+			Assert.IsFalse(bVal.IsInteger()); Assert.AreEqual('b', bVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_integer_value()
         {
-            iVal.IsScalar().Should().BeTrue();
-            iVal.IsNonComplexScalar().Should().BeTrue();
-            iVal.IsMatrix().Should().BeFalse();
-            iVal.IsInteger().Should().BeTrue();
-            iVal.GetValueType().Should().Be('i');
+			Assert.IsTrue(iVal.IsScalar());
+			Assert.IsTrue(iVal.IsNonComplexScalar());
+			Assert.IsFalse(iVal.IsMatrix());
+			Assert.IsTrue(iVal.IsInteger()); Assert.AreEqual('i', iVal.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_float_variable()
         {
-            fVar.IsScalar().Should().BeTrue();
-            fVar.IsNonComplexScalar().Should().BeTrue();
-            fVar.IsMatrix().Should().BeFalse();
-            fVar.IsInteger().Should().BeFalse();
-            fVar.GetValueType().Should().Be('f');
+			Assert.IsTrue(fVar.IsScalar());
+			Assert.IsTrue(fVar.IsNonComplexScalar());
+			Assert.IsFalse(fVar.IsMatrix());
+			Assert.IsFalse(fVar.IsInteger()); Assert.AreEqual('f', fVar.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_complex_variable()
         {
-            cVar.IsScalar().Should().BeTrue();
-            cVar.IsNonComplexScalar().Should().BeFalse();
-            cVar.IsMatrix().Should().BeFalse();
-            cVar.IsInteger().Should().BeFalse();
-            cVar.GetValueType().Should().Be('z');
+			Assert.IsTrue(cVar.IsScalar());
+			Assert.IsFalse(cVar.IsNonComplexScalar());
+			Assert.IsFalse(cVar.IsMatrix());
+			Assert.IsFalse(cVar.IsInteger()); Assert.AreEqual('z', cVar.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_matrix_variable()
         {
-            aVar.IsScalar().Should().BeFalse();
-            aVar.IsNonComplexScalar().Should().BeFalse();
-            aVar.IsMatrix().Should().BeTrue();
-            aVar.IsInteger().Should().BeFalse();
-            aVar.GetValueType().Should().Be('m');
+			Assert.IsFalse(aVar.IsScalar());
+			Assert.IsFalse(aVar.IsNonComplexScalar());
+			Assert.IsTrue(aVar.IsMatrix());
+			Assert.IsFalse(aVar.IsInteger()); Assert.AreEqual('m', aVar.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_string_variable()
         {
-            sVar.IsScalar().Should().BeFalse();
-            sVar.IsNonComplexScalar().Should().BeFalse();
-            sVar.IsMatrix().Should().BeFalse();
-            sVar.IsInteger().Should().BeFalse();
-            sVar.GetValueType().Should().Be('s');
+			Assert.IsFalse(sVar.IsScalar());
+			Assert.IsFalse(sVar.IsNonComplexScalar());
+			Assert.IsFalse(sVar.IsMatrix());
+			Assert.IsFalse(sVar.IsInteger()); Assert.AreEqual('s', sVar.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_bool_variable()
         {
-            bVar.IsScalar().Should().BeFalse();
-            bVar.IsNonComplexScalar().Should().BeFalse();
-            bVar.IsMatrix().Should().BeFalse();
-            bVar.IsInteger().Should().BeFalse();
-            bVar.GetValueType().Should().Be('b');
+			Assert.IsFalse(bVar.IsScalar());
+			Assert.IsFalse(bVar.IsNonComplexScalar());
+			Assert.IsFalse(bVar.IsMatrix());
+			Assert.IsFalse(bVar.IsInteger()); Assert.AreEqual('b', bVar.GetValueType());
         }
 
         [TestMethod]
         public void test_type_checking_of_integer_variable()
         {
-            iVar.IsScalar().Should().BeTrue();
-            iVar.IsNonComplexScalar().Should().BeTrue();
-            iVar.IsMatrix().Should().BeFalse();
-            iVar.IsInteger().Should().BeTrue();
-            iVar.GetValueType().Should().Be('i');
+			Assert.IsTrue(iVar.IsScalar());
+			Assert.IsTrue(iVar.IsNonComplexScalar());
+			Assert.IsFalse(iVar.IsMatrix());
+			Assert.IsTrue(iVar.IsInteger()); Assert.AreEqual('i', iVar.GetValueType());
         }
 
         [TestMethod]
@@ -200,11 +191,7 @@ namespace MuParserSharp.Tests
         {
             IValue x = 1.0;
             IValue y = new Complex(0, 1);
-            x += y;
-
-            x.GetImag().Should().Be(1);
-            x.GetReal().Should().Be(1);
-            x.GetValueType().Should().Be('z');
+            x += y; Assert.AreEqual(1, x.GetImag()); Assert.AreEqual(1, x.GetReal()); Assert.AreEqual('z', x.GetValueType());
         }
 
         [TestMethod]
@@ -212,11 +199,7 @@ namespace MuParserSharp.Tests
         {
             IValue x = 1.0;
             IValue y = new Complex(0, 1);
-            x -= y;
-
-            x.GetImag().Should().Be(-1);
-            x.GetReal().Should().Be(1);
-            x.GetValueType().Should().Be('z');
+            x -= y; Assert.AreEqual(-1, x.GetImag()); Assert.AreEqual(1, x.GetReal()); Assert.AreEqual('z', x.GetValueType());
         }
 
 

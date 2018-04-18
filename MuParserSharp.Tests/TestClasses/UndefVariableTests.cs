@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MuParserSharp.Parser;
 
 namespace MuParserSharp.Tests
@@ -13,10 +12,9 @@ namespace MuParserSharp.Tests
             var p = new ParserX();
             p.SetExpr("a+b+c+d");
             var expr_var = p.GetExprVar();
-            var var = p.GetVar();
-
-            expr_var.Count.Should().Be(4);
-            var.Should().BeEmpty();
+            var var = p.GetVar();			
+Assert.AreEqual(4, expr_var.Count);
+            Assert.AreEqual(0, var.Count);
 
         }
 
@@ -27,10 +25,9 @@ namespace MuParserSharp.Tests
             p.EnableAutoCreateVar(true);
             p.SetExpr("a+b+c+d");
             var expr_var = p.GetExprVar();
-            var var = p.GetVar();
-
-            expr_var.Count.Should().Be(4);
-            var.Count.Should().Be(4);
+            var var = p.GetVar();			
+Assert.AreEqual(4, expr_var.Count);			
+Assert.AreEqual(4, var.Count);
         }
 
         [TestMethod]
@@ -45,10 +42,9 @@ namespace MuParserSharp.Tests
 
             p.SetExpr("a+b+c+d");
             var expr_var = p.GetExprVar();
-            var var = p.GetVar();
-
-            expr_var.Count.Should().Be(4);
-            var.Count.Should().Be(4);
+            var var = p.GetVar();			
+Assert.AreEqual(4, expr_var.Count);			
+Assert.AreEqual(4, var.Count);
 
         }
     }

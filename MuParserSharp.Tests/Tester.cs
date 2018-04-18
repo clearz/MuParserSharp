@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MuParserSharp.Framework;
 using MuParserSharp.Parser;
@@ -203,7 +202,7 @@ namespace MuParserSharp.Tests
                         break;
                 }
 
-                bStat.Should().Be(a_fPass, "Values are equal");
+                Assert.AreEqual(bStat, a_fPass);
             }
             catch (ParserError p)
             {
@@ -301,18 +300,19 @@ namespace MuParserSharp.Tests
             }
             catch(ParserError p)
             {
-                p.GetCode().Should().Be(a_nErrc);
+                Assert.AreEqual(p.GetCode(), a_nErrc);
                 if (a_nPos != -1)
-                    p.GetPos().Should().Be(a_nPos);
+                    Assert.AreEqual(p.GetPos(), a_nPos);
                 if (a_sIdent != null)
-                    p.GetToken().Should().Be(a_sIdent);
+                    Assert.AreEqual(p.GetToken(), a_sIdent);
             }
         }
 
         public static void ValueThrowCheck<T>(bool v, IValue obj, Func<T> action)
         {
-            if (v) obj.Invoking(_ => action()).Should().Throw<ParserError>();
-            else obj.Invoking(_ => action()).Should().NotThrow<ParserError>();
+            if (v) Assert.ThrowsException<ParserError>(() => action());
+            else try{ action(); }catch(ParserError e) { Assert.Fail(e.GetMsg()); }
+
         }
     }
 
